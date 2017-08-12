@@ -41,7 +41,7 @@ void automata1(){
         }
 
         if(!band){
-            cout<<"\t La Cadena ingresada tiene caracteres invalidos";
+            cout<<"\t La Cadena ingresada tiene caracteres invalidos"<<endl;
             return;
         }
     }
@@ -125,6 +125,72 @@ void automata1(){
 
 }
 
+void automata2(){
+
+    char caracteresAceptados [2];
+    caracteresAceptados[0] = 'a';
+    caracteresAceptados[1] = 'b';
+
+    char cadena [20];
+    cout<<"\t Ingrese Palabra a verificar : ";
+    cin>>cadena;
+
+    bool band;
+    for(int i = 0; i < strlen(cadena) ; i++){
+        band = false;
+        for (char caracteresAceptado : caracteresAceptados) {
+            if(cadena[i] == caracteresAceptado){
+                band = true;
+                break;
+            }
+        }
+
+        if(!band){
+            cout<<"\t La Cadena ingresada tiene caracteres invalidos"<<endl;
+            return;
+        }
+    }
+
+
+    int size = strlen(cadena);
+
+    stack<char> pila;
+
+    if(cadena[0] == 'a'){
+        pila.push('x');
+    }
+    else if(cadena[0] == 'b'){
+        pila.push('y');
+    }
+
+    band = false;
+    char top;
+    if(cadena[size - 1] == 'a'){
+        top = pila.top();
+        if(top == 'x'){
+            band = true;
+        }
+        else if(top == 'y'){
+            band = false;
+        }
+    }
+    else if(cadena[size - 1] == 'b'){
+        if(top == 'x'){
+            band = false;
+        }
+        else if(top == 'y'){
+            band = true;
+        }
+    }
+
+    if(band){
+        cout<<"\t Cadena Aceptada"<<endl;
+    }
+    else{
+        cout<<"\t Cadena Rechazada"<<endl;
+    }
+}
+
 
 int main(){
 
@@ -134,6 +200,7 @@ int main(){
         int opcion = menu();
         switch (opcion){
             case 1 : automata1();
+            case 2 : automata2();
             default:break;
         }
     }

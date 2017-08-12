@@ -1,4 +1,4 @@
-##Automatas de Pila
+#Automatas de Pila
 Automata 1 : w = 0n 1m 0n, n,m >=0.
 
 Automata 2 : w empieza y termina con el mismo simbolo.
