@@ -191,6 +191,95 @@ void automata2(){
     }
 }
 
+void automata3(){
+
+    char caracteresAceptados [2];
+    caracteresAceptados[0] = 'a';
+    caracteresAceptados[1] = 'b';
+
+    char cadena [20];
+    cout<<"\t Ingrese Palabra a verificar : ";
+    cin>>cadena;
+
+    bool band;
+    for(int i = 0; i < strlen(cadena) ; i++){
+        band = false;
+        for (char caracteresAceptado : caracteresAceptados) {
+            if(cadena[i] == caracteresAceptado){
+                band = true;
+                break;
+            }
+        }
+
+        if(!band){
+            cout<<"\t La Cadena ingresada tiene caracteres invalidos"<<endl;
+            return;
+        }
+    }
+
+    stack<char> pila;
+
+    for(int i = 0; i < strlen(cadena) ; i++){
+        if(i % 2 == 0){
+            pila.push('x');
+        }
+        else{
+            pila.pop();
+        }
+    }
+
+    if(pila.empty()){
+        cout<<"\t Cadena Aceptada"<<endl;
+    }
+    else{
+        cout<<"\t Cadena Rechazada"<<endl;
+    }
+}
+
+void automata5(){
+
+    char caracteresAceptados [2];
+    caracteresAceptados[0] = 'a';
+    caracteresAceptados[1] = 'b';
+
+    char cadena [20];
+    cout<<"\t Ingrese Palabra a verificar : ";
+    cin>>cadena;
+
+    bool band;
+    for(int i = 0; i < strlen(cadena) ; i++){
+        band = false;
+        for (char caracteresAceptado : caracteresAceptados) {
+            if(cadena[i] == caracteresAceptado){
+                band = true;
+                break;
+            }
+        }
+
+        if(!band){
+            cout<<"\t La Cadena ingresada tiene caracteres invalidos"<<endl;
+            return;
+        }
+    }
+
+    stack<char> pila;
+
+    for(int i = 0; i < strlen(cadena) ; i++){
+        if(i % 2 == 0){
+            pila.push('x');
+        }
+        else{
+            pila.pop();
+        }
+    }
+
+    if(pila.empty()){
+        cout<<"\t Cadena Rechazada"<<endl;
+    }
+    else{
+        cout<<"\t Cadena Aceptada"<<endl;
+    }
+}
 
 int main(){
 
@@ -201,6 +290,8 @@ int main(){
         switch (opcion){
             case 1 : automata1();
             case 2 : automata2();
+            case 3 : automata3();
+            case 5 : automata5();
             default:break;
         }
     }
