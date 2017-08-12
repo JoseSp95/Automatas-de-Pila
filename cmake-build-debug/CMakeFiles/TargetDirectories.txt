@@ -1,0 +1,3 @@
+C:/Users/Jose sp/CLionProjects/AutomataPila/cmake-build-debug/CMakeFiles/AutomataPila.dir
+C:/Users/Jose sp/CLionProjects/AutomataPila/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/Jose sp/CLionProjects/AutomataPila/cmake-build-debug/CMakeFiles/rebuild_cache.dir
