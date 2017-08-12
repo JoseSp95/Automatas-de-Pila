@@ -236,6 +236,77 @@ void automata3(){
     }
 }
 
+void automata4(){
+
+    char caracteresAceptados [2];
+    caracteresAceptados[0] = 'a';
+    caracteresAceptados[1] = 'b';
+
+    char cadena [20];
+    cout<<"\t Ingrese Palabra a verificar : ";
+    cin>>cadena;
+
+    bool band;
+    for(int i = 0; i < strlen(cadena) ; i++){
+        band = false;
+        for (char caracteresAceptado : caracteresAceptados) {
+            if(cadena[i] == caracteresAceptado){
+                band = true;
+                break;
+            }
+        }
+
+        if(!band){
+            cout<<"\t La Cadena ingresada tiene caracteres invalidos"<<endl;
+            return;
+        }
+    }
+
+    //verificamos que despues del an bm no haya mas letras
+    bool pasamosLosB = false;
+    bool error = false;
+    for(int i = 0; i < strlen(cadena) ; i++){
+        if(cadena[i] == 'b'){
+            pasamosLosB = true;
+        }
+        else if(cadena[i] == 'a'){
+            if(pasamosLosB){
+                error = true;
+                break;
+            }
+        }
+    }
+
+    if(error){
+        cout<<"\t Cadena Rechazada"<<endl;
+        return;
+    }
+
+    band = false;
+    stack<char> pila;
+    for(int i = 0; i < strlen(cadena) ; i++){
+        if(cadena[i] == 'a'){
+            pila.push('x');
+        }
+        else if(cadena[i] == 'b'){
+            if(pila.empty()){
+                band = true;
+                break;
+            }
+            pila.pop();
+            pila.pop();
+        }
+    }
+
+    if(pila.empty() && !band){
+        cout<<"\t Cadena Rechazada"<<endl;
+    }
+    else if(band || !pila.empty()){
+        cout<<"\t Cadena Aceptada"<<endl;
+    }
+
+}
+
 void automata5(){
 
     char caracteresAceptados [2];
@@ -289,11 +360,20 @@ int main(){
         int opcion = menu();
         switch (opcion){
             case 1 : automata1();
+                break;
             case 2 : automata2();
+                break;
             case 3 : automata3();
+                break;
+            case 4 : automata4();
+                break;
             case 5 : automata5();
+                break;
             default:break;
         }
+
+        system("pause");
+        system("cls");
     }
 
 
